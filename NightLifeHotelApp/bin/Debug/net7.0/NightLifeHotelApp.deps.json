@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "NightLifeHotelApp/1.0.0": {
+        "runtime": {
+          "NightLifeHotelApp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NightLifeHotelApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
