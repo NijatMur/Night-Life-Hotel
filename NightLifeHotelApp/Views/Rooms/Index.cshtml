@@ -1,5 +1,68 @@
 ﻿@{
     ViewData["Title"] = "Rooms Page";
+
+    //var roomsJsonExists = File.Exists(path: "Data/rooms.json");
+    var roomsJson = await File.ReadAllTextAsync(path: "Data/rooms.json");
+    var options = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true,
+                WriteIndented = true
+            };
+    var rooms = JsonSerializer.Deserialize<IEnumerable<Room>>(roomsJson, options) ?? Enumerable.Empty<Room>();
 }
 
-<p>All rooms</p>
+<button class="room-accordion">Create new Room</button>
+<div class="room-accordion-panel">
+    <form class="room-form" action="/Rooms" method="post">
+        <label>
+            Floor:
+            <input type="number" name="Floor">
+        </label>
+
+        <label>
+            Number:
+            <input type="number" name="Number">
+        </label>
+
+        <label>
+            Cost:
+            <input type="number" name="Cost">
+        </label>
+
+        <label>
+            Reservation begin:
+            <input type="datetime-local" name="ReservationBegin">
+        </label>
+
+        <label>
+            Reservation end:
+            <input type="datetime-local" name="ReservationEnd">
+        </label>
+
+        <label>
+            About room:
+            <input type="text" name="AboutRoom" placeholder="optionality">
+        </label>
+        <button>Create</button>
+    </form>
+</div>
+
+<h3>Rooms list</h3>
+
+<div class="room-wrapper-get">
+    @foreach (var room in rooms)
+    {
+        <div class="room-inner-get">
+            <p>Floor: @(room?.Floor)</p>
+            <p>Number: @(room?.Number)</p>
+            <p>Cost: @(room?.Cost) AZN</p>
+            <p>Reservation begin: @(room?.ReservationBegin)</p>
+            <p>Reservation end: @(room?.ReservationEnd)</p>
+            @if (!string.IsNullOrEmpty(room?.AboutRoom))
+            {
+                <p><b>About room: @(room?.AboutRoom)</b></p>
+            }
+        </div>
+        <br />
+    }
+</div>

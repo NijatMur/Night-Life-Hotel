@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NightLifeHotelApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26ae6e5ad927f0daf8bef0b6ea4bec698b622339")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+940671fc9c3e6f07f5f444782abb959b97b3a936")]
 [assembly: System.Reflection.AssemblyProductAttribute("NightLifeHotelApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NightLifeHotelApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

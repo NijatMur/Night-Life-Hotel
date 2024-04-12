@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LiveForEver\\Desktop\\Night-Life-Hotel\\NightLifeHotelApp\\NightLifeHotelApp.csproj",
+      "projectUniqueName": "C:\\Users\\LiveForEver\\Desktop\\NightLifeHotel\\NightLifeHotelApp\\NightLifeHotelApp.csproj",
       "projectName": "NightLifeHotelApp",
-      "projectPath": "C:\\Users\\LiveForEver\\Desktop\\Night-Life-Hotel\\NightLifeHotelApp\\NightLifeHotelApp.csproj",
+      "projectPath": "C:\\Users\\LiveForEver\\Desktop\\NightLifeHotel\\NightLifeHotelApp\\NightLifeHotelApp.csproj",
       "packagesPath": "C:\\Users\\LiveForEver\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LiveForEver\\Desktop\\Night-Life-Hotel\\NightLifeHotelApp\\obj\\",
+      "outputPath": "C:\\Users\\LiveForEver\\Desktop\\NightLifeHotel\\NightLifeHotelApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
