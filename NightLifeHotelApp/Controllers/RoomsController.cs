@@ -1,45 +1,68 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NightLifeHotelApp.Models;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace NightLifeHotelApp.Controllers;
 
 public class RoomsController : Controller
 {
-    // GET: RoomController
-    [HttpGet]
-    [Route("[controller]")]
-    public IActionResult Index()
+    private string jsonPath = "Data/rooms.json";
+
+    private JsonSerializerOptions options = new JsonSerializerOptions()
     {
-        return View();
+        PropertyNameCaseInsensitive = true,
+        WriteIndented = true
+    };
+
+    [HttpGet]
+    [ActionName("Index")]
+    [Route("[controller]")]
+    public async Task<IActionResult> GetAllRooms()
+    {
+        var rooms = await Deserialize(jsonPath);
+
+        return View(model: rooms);
     }
 
-    // POST: RoomController
     [HttpPost]
     [Route("[controller]")]
-    public async Task<IActionResult> Create(Room room) //IFormCollection
+    public async Task<IActionResult> CreateRoom(Room room)
     {
-        var roomsJson = await System.IO.File.ReadAllTextAsync(path: "Data/rooms.json");
-        var options = new JsonSerializerOptions()
+        var rooms = await Deserialize(jsonPath);
+
+        if (rooms.Count == 0)
         {
-            PropertyNameCaseInsensitive = true,
-            WriteIndented = true
-        };
-        var rooms = JsonSerializer.Deserialize<List<Room>>(roomsJson, options);
+            return View(model: Enumerable.Empty<Room>());
+        }
 
         room.Id = Guid.NewGuid();
-        rooms?.Add(room);
+        rooms.Add(room);
 
-        var resultRoomsJson = JsonSerializer.Serialize<List<Room>>(rooms!, options);
-        await System.IO.File.WriteAllTextAsync(path: "Data/rooms.json", resultRoomsJson);
+        Serialize(rooms, jsonPath);
 
-        try
+        return RedirectToAction(nameof(Index));
+    }
+
+    private async Task<List<Room>> Deserialize(string path)
+    {
+        var roomsJsonExists = System.IO.File.Exists(path);
+        if (!roomsJsonExists)
         {
-            return RedirectToAction(nameof(Index));
+            return Enumerable.Empty<Room>().ToList();
         }
-        catch
-        {
-            return View();
-        }
+
+        var roomsJson = await System.IO.File.ReadAllTextAsync(path);
+        var rooms = JsonSerializer.Deserialize<List<Room>>(roomsJson, options);
+
+        return rooms!;
+    }
+
+    private async void Serialize(List<Room> rooms, string path)
+    {
+        var resultRoomsJson = JsonSerializer.Serialize<List<Room>>(rooms, options);
+        await System.IO.File.WriteAllTextAsync(path, resultRoomsJson);
     }
 }

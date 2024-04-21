@@ -1,17 +1,11 @@
-﻿@{
+﻿@model List<Room>
+
+@{
     ViewData["Title"] = "Rooms Page";
 
-    //var roomsJsonExists = File.Exists(path: "Data/rooms.json");
-    var roomsJson = await File.ReadAllTextAsync(path: "Data/rooms.json");
-    var options = new JsonSerializerOptions()
-            {
-                PropertyNameCaseInsensitive = true,
-                WriteIndented = true
-            };
-    var rooms = JsonSerializer.Deserialize<IEnumerable<Room>>(roomsJson, options) ?? Enumerable.Empty<Room>();
 }
 
-<button class="room-accordion">Create new Room</button>
+<button class="room-accordion">Create new room</button>
 <div class="room-accordion-panel">
     <form class="room-form" action="/Rooms" method="post">
         <label>
@@ -47,22 +41,28 @@
     </form>
 </div>
 
-<h3>Rooms list</h3>
-
 <div class="room-wrapper-get">
-    @foreach (var room in rooms)
+    @if (base.Model.Count == 0)
     {
-        <div class="room-inner-get">
-            <p>Floor: @(room?.Floor)</p>
-            <p>Number: @(room?.Number)</p>
-            <p>Cost: @(room?.Cost) AZN</p>
-            <p>Reservation begin: @(room?.ReservationBegin)</p>
-            <p>Reservation end: @(room?.ReservationEnd)</p>
-            @if (!string.IsNullOrEmpty(room?.AboutRoom))
-            {
-                <p><b>About room: @(room?.AboutRoom)</b></p>
-            }
-        </div>
-        <br />
+        <h4>Json file with rooms list is doesn't exist!</h4>
+    }
+    else
+    {
+        <h4>Rooms list</h4>
+        @foreach (var room in base.Model)
+        {
+            <div class="room-inner-get">
+                <p>Floor: @(room.Floor)</p>
+                <p>Number: @(room.Number)</p>
+                <p>Cost: @(room.Cost) AZN</p>
+                <p>Reservation begin: @(room.ReservationBegin)</p>
+                <p>Reservation end: @(room.ReservationEnd)</p>
+                @if (!string.IsNullOrEmpty(room.AboutRoom))
+                {
+                    <p><b>About room: @(room.AboutRoom)</b></p>
+                }
+            </div>
+            <br />
+        }
     }
 </div>
