@@ -1,101 +1,50 @@
 [
   {
-    "Id": "39428d82-8505-4f2c-9c93-11e923d2f4a5",
-    "Number": 4,
-    "Floor": 1,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "e732f204-f8eb-4291-b66b-12070b344633",
-    "Number": 8,
-    "Floor": 2,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "e8d43252-bc0f-4444-9b68-2a8f8e410484",
-    "Number": 7,
-    "Floor": 2,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "217b8387-0840-4c35-b73c-2cd331985fc0",
-    "Number": 6,
-    "Floor": 2,
-    "Cost": 36,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": "VIP room!"
-  },
-  {
-    "Id": "902bcb78-5d9a-4d96-8fca-6a06bddf91c1",
-    "Number": 2,
-    "Floor": 1,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "e30c46ad-b346-4dac-9bd0-6e8b90051783",
-    "Number": 10,
-    "Floor": 2,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "eb0b9de4-6d98-420f-87f4-7fd5d1246f8c",
-    "Number": 11,
-    "Floor": 2,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "0c10acd5-77c1-4d94-b118-89649d530872",
+    "Id": "a70923e1-bd83-42a0-919f-a9d4f4fe0691",
     "Number": 1,
     "Floor": 1,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
+    "IsVIP": false,
+    "AboutRoom": "",
+    "Reservation": {
+      "Id": "4fb08ba7-caf8-409e-8015-e4389d1b74e4",
+      "ReservationBegin": "2024-01-10T00:00:00",
+      "ReservationEnd": "2024-01-10T00:00:00"
+    },
+    "Price": {
+      "Id": "4f262df3-ea58-406c-b011-5119a5e9cd08",
+      "Cost": 24
+    }
   },
   {
-    "Id": "22e16a00-79f1-4fea-89a0-9079dd092851",
+    "Id": "373d8e67-604f-44e1-99bc-289f5fe34ab2",
+    "Number": 2,
+    "Floor": 1,
+    "IsVIP": true,
+    "AboutRoom": "",
+    "Reservation": {
+      "Id": "bd20be6d-2e85-4d62-a5c2-ff845bf324b1",
+      "ReservationBegin": "2024-01-10T00:00:00",
+      "ReservationEnd": "2024-01-10T00:00:00"
+    },
+    "Price": {
+      "Id": "846df861-0e1d-4be1-ba40-eed0b8ff64e7",
+      "Cost": 50
+    }
+  },
+  {
+    "Id": "e6045782-89e3-43a7-a92e-298b19e58b19",
     "Number": 5,
-    "Floor": 1,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
-  },
-  {
-    "Id": "d7f9edff-b86b-4dea-a002-a7061d68602f",
-    "Number": 8,
-    "Floor": 2,
-    "Cost": 36,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": "VIP room!"
-  },
-  {
-    "Id": "bfa3b33d-9736-4e97-a523-a7876b38966a",
-    "Number": 3,
-    "Floor": 1,
-    "Cost": 24,
-    "ReservationBegin": "0001-01-01T00:00:00",
-    "ReservationEnd": "0001-01-01T00:00:00",
-    "AboutRoom": ""
+    "Floor": 5,
+    "IsVIP": false,
+    "AboutRoom": null,
+    "Reservation": {
+      "Id": "72491c39-8c83-44b6-b4dc-9d949e02d8ff",
+      "ReservationBegin": "2024-04-28T11:07:00",
+      "ReservationEnd": "2024-04-28T11:07:00"
+    },
+    "Price": {
+      "Id": "b8fc5215-fb22-4223-97d4-0aec5b179902",
+      "Cost": 55
+    }
   }
 ]

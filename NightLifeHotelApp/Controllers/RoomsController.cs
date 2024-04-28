@@ -1,68 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NightLifeHotelApp.Models;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
+using NightLifeHotelApp.Services.Base;
 
 namespace NightLifeHotelApp.Controllers;
 
 public class RoomsController : Controller
 {
-    private string jsonPath = "Data/rooms.json";
-
-    private JsonSerializerOptions options = new JsonSerializerOptions()
+    private readonly IRoomService roomService;
+    public RoomsController(IRoomService roomService)
     {
-        PropertyNameCaseInsensitive = true,
-        WriteIndented = true
-    };
+        this.roomService = roomService;
+    }
 
     [HttpGet]
-    [ActionName("Index")]
     [Route("[controller]")]
-    public async Task<IActionResult> GetAllRooms()
+    public async Task<IActionResult> Index()
     {
-        var rooms = await Deserialize(jsonPath);
+        var rooms = await this.roomService.GetAllAsync();
 
-        return View(model: rooms);
+        return base.View(model: rooms);
     }
 
     [HttpPost]
     [Route("[controller]")]
-    public async Task<IActionResult> CreateRoom(Room room)
+    public IActionResult CreateRoom(Room room)
     {
-        var rooms = await Deserialize(jsonPath);
+        this.roomService.CreateAsync(room);
 
-        if (rooms.Count == 0)
-        {
-            return View(model: Enumerable.Empty<Room>());
-        }
-
-        room.Id = Guid.NewGuid();
-        rooms.Add(room);
-
-        Serialize(rooms, jsonPath);
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    private async Task<List<Room>> Deserialize(string path)
-    {
-        var roomsJsonExists = System.IO.File.Exists(path);
-        if (!roomsJsonExists)
-        {
-            return Enumerable.Empty<Room>().ToList();
-        }
-
-        var roomsJson = await System.IO.File.ReadAllTextAsync(path);
-        var rooms = JsonSerializer.Deserialize<List<Room>>(roomsJson, options);
-
-        return rooms!;
-    }
-
-    private async void Serialize(List<Room> rooms, string path)
-    {
-        var resultRoomsJson = JsonSerializer.Serialize<List<Room>>(rooms, options);
-        await System.IO.File.WriteAllTextAsync(path, resultRoomsJson);
+        return base.RedirectToAction(nameof(Index));
     }
 }
