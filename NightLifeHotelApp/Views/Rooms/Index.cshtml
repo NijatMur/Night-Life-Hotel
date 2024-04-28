@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Room>
+
+@{
+    ViewData["Title"] = "Rooms Page";
+}
+
+<button class="room-accordion">Create new room</button>
+<div class="room-accordion-panel">
+    <form class="room-form" action="/Rooms" method="post">
+        <label>
+            Floor:
+            <input type="number" name="Floor">
+        </label>
+
+        <label>
+            Number:
+            <input type="number" name="Number">
+        </label>
+
+        <label>
+            Cost:
+            <input type="number" name="Price.Cost">
+        </label>
+
+        <label>
+            Reservation begin:
+            <input type="datetime-local" name="Reservation.ReservationBegin">
+        </label>
+
+        <label>
+            Reservation end:
+            <input type="datetime-local" name="Reservation.ReservationEnd">
+        </label>
+
+        <label>
+            About room:
+            <input type="text" name="AboutRoom" placeholder="Optionality">
+        </label>
+        <button>Create</button>
+    </form>
+</div>
+
+<div class="room-wrapper-get">
+    <h5>Rooms list</h5>
+    @foreach (var room in base.Model)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">Floor: @room.Floor</p>
+                        <p class="card-text">Number: @room.Number</p>
+                        <p class="card-text">Cost: @room.Price?.Cost AZN</p>
+                        <p class="card-text">Reservation begin: @room.Reservation?.ReservationBegin</p>
+                        <p class="card-text">Reservation end: @room.Reservation?.ReservationEnd</p>
+
+                        @if (!string.IsNullOrEmpty(room?.AboutRoom))
+                        {
+                            <p class="card-text">About room: @room.AboutRoom</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
